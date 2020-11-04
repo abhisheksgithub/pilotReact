@@ -1,12 +1,40 @@
-import React from 'react'
+import React, { Component } from 'react'
+import { connect } from 'react-redux';
 import Dashboard from './components/Dashboard'
 
-function App() {
-  return (
-    <div className="App">
-      <Dashboard />
-    </div>
-  );
+class App extends React.Component {
+  constructor(props) {
+    super(props)
+  }
+
+  componentDidMount() {
+    fetch('https://jsonplaceholder.typicode.com/users').then(response => {
+       return response.json()
+    })
+       .then(data => { 
+           this.props.userDetailUpdate(data)
+       })
+  }
+
+  render() {
+    return (
+      <div className="App">
+          <Dashboard />
+      </div>
+    );
+  }
 }
 
-export default App;
+const mapDispatchToProps = dispatch => {
+  return {
+    userDetailUpdate : (val) => dispatch({ type: 'ADD_USERS', payload: val })
+  }
+}
+
+export default connect(null, mapDispatchToProps)(App);
+
+
+// store  <-- reducer <-- action (type, payload) [Child Component]
+//        --> connect ( mapStateToProps )   --> [Child Component]
+// Higher order component
+// 
