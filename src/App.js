@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
+import Child from './components/Child';
 import Dashboard from './components/Dashboard'
 
 class App extends React.Component {
@@ -19,7 +20,8 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-          <Dashboard />
+          {/* <Dashboard /> */}
+          <Child />
       </div>
     );
   }
