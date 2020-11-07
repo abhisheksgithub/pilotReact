@@ -11,7 +11,10 @@ class Dashboard extends React.Component {
     }
 
     deleteMe = (id) => {
-        this.setState({ userDetails : this.state.userDetails.filter(item => item.id !== id )})
+        console.log("----> ", id)
+      // this.setState({ userDetails : this.state.userDetails.filter(item => item.id !== id )})
+      this.props.userDelete({id: id})
+      
     }
 
     editMe = (id) => {
@@ -21,18 +24,7 @@ class Dashboard extends React.Component {
 
     
     saveEditData = (id) => {
-        // const oldData = this.props.userData.find(item => item.id == this.state.editName.id)
-        // const newName = this.state.editName.name;
-
-        // const data = this.props.userData.map(item => {
-        //     if (item.id === oldData.id) {
-        //         return {...item, name: newName};
-        //       } else {
-        //         return item;
-        //       }
-        // });
         this.props.userNameUpdate({ id: this.state.editName.id, name: this.state.editName.name})
-        // this.setState({ userDetails: data })
     }
 
     handleChange = (evt) => {
@@ -63,7 +55,9 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    userNameUpdate: (val) => dispatch({ type: 'UPDATE_USERNAME', payload: val })
+    userNameUpdate: (val) => dispatch({ type: 'UPDATE_USERNAME', payload: val }),
+    userDelete: (val) => dispatch({ type: 'DELETE_USERNAME', payload: val }),
+
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard)

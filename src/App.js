@@ -11,7 +11,7 @@ class App extends React.Component {
   componentDidMount() {
     fetch('https://jsonplaceholder.typicode.com/users').then(response => {
        return response.json()
-    })
+       })
        .then(data => { 
            this.props.userDetailUpdate(data)
        })
@@ -20,8 +20,8 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-          {/* <Dashboard /> */}
-          <Child />
+          <Dashboard />
+          {/* <Child /> */}
       </div>
     );
   }
