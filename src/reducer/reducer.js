@@ -3,6 +3,9 @@ export default function reducer(state = {}, action) {
         case 'ADD_USERS' : {
             return {...state, userDetails: action.payload}
         }
+        case 'ADD_COMMENTS': {
+            return {...state, commentDetails: action.payload}
+        }
         case 'UPDATE_USERNAME' : {
             let indUser = -1
             state.userDetails.find((item, ind) => {

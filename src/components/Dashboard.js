@@ -33,7 +33,7 @@ class Dashboard extends React.Component {
 
 
     render() {
-        console.log(this.props.userData, 'userData')
+        console.log(this.props.state, 'userData')
         return (
             <>
                 <div><h2>My User Details</h2></div>
@@ -51,7 +51,8 @@ class Dashboard extends React.Component {
 };
 
 const mapStateToProps = state => ({
-    userData: state.userDetails ? state.userDetails : []
+    userData: state.userDetails ? state.userDetails : [],
+    state: state
 })
 
 const mapDispatchToProps = dispatch => ({

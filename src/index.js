@@ -6,7 +6,8 @@ import { Provider } from 'react-redux'
 import reducer from './reducer/reducer'
 
 const initState = {
-  userDetails: []
+  userDetails: [],
+  commentDetails: []
 }
 
 const store = createStore(reducer, initState)
