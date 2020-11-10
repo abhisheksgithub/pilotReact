@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 class Comments extends React.Component {
     constructor(props) {
@@ -11,8 +12,8 @@ class Comments extends React.Component {
             <div>
                 <h3>User comment Details</h3>
                 <ul>
-                    {this.props.userComments.map(item=> {
-                        return <li>{item.name}</li>
+                    {this.props.userComments.map((item, index)=> {
+                        return <li key={index}><Link to={`/comments/editComments/${item.id}`}>{item.name}</Link></li>
                     })}
                 </ul>
             </div>

@@ -5,6 +5,7 @@ import Dashboard from './components/Dashboard'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Header from './components/Header';
 import Comments from './components/Comments';
+import EditComments from './components/EditComments';
 
 class App extends React.Component {
   constructor(props) {
@@ -31,7 +32,8 @@ class App extends React.Component {
           <Header />
           <Switch>
             <Route exact path="/" component={Dashboard} />
-            <Route path="/comments" component={Comments} />
+            <Route exact path="/comments" component={Comments} />
+            <Route path="/comments/editComments/:commentId" component={EditComments} />
           </Switch>
         </BrowserRouter>
       </div>

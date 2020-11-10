@@ -33,7 +33,7 @@ class Dashboard extends React.Component {
 
 
     render() {
-        console.log(this.props.state, 'userData')
+        console.log(this.props, 'userData')
         return (
             <>
                 <div><h2>My User Details</h2></div>
