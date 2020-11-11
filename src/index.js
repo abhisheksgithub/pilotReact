@@ -7,7 +7,8 @@ import reducer from './reducer/reducer'
 
 const initState = {
   userDetails: [],
-  commentDetails: []
+  commentDetails: [],
+  photoDetails: []
 }
 
 const store = createStore(reducer, initState)

@@ -11,7 +11,6 @@ class Dashboard extends React.Component {
     }
 
     deleteMe = (id) => {
-        console.log("----> ", id)
       // this.setState({ userDetails : this.state.userDetails.filter(item => item.id !== id )})
       this.props.userDelete({id: id})
       

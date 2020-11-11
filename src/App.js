@@ -5,7 +5,9 @@ import Dashboard from './components/Dashboard'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Header from './components/Header';
 import Comments from './components/Comments';
+import Photos from './components/Photos';
 import EditComments from './components/EditComments';
+import EditPhoto from './components/EditPhoto';
 
 class App extends React.Component {
   constructor(props) {
@@ -23,6 +25,12 @@ class App extends React.Component {
       .then(data => {
           this.props.commentDetailUpdate(data)
       })
+
+    fetch('https://jsonplaceholder.typicode.com/photos').then(response => response.json())
+      .then(data => {
+        this.props.photoDetailUpdate(data)
+      })
+
   }
 
   render() {
@@ -32,8 +40,10 @@ class App extends React.Component {
           <Header />
           <Switch>
             <Route exact path="/" component={Dashboard} />
+            <Route exact path="/photos" component={Photos} />
             <Route exact path="/comments" component={Comments} />
-            <Route path="/comments/editComments/:commentId" component={EditComments} />
+            <Route path="/comments/editComments/:commentId" component={EditComments} /> 
+            <Route path="/photos/editPhoto/:id" component={EditPhoto} /> 
           </Switch>
         </BrowserRouter>
       </div>
@@ -44,7 +54,8 @@ class App extends React.Component {
 const mapDispatchToProps = dispatch => {
   return {
     userDetailUpdate : (val) => dispatch({ type: 'ADD_USERS', payload: val }),
-    commentDetailUpdate: (val) => dispatch({ type: 'ADD_COMMENTS', payload: val})
+    commentDetailUpdate: (val) => dispatch({ type: 'ADD_COMMENTS', payload: val}),
+    photoDetailUpdate: (val) => dispatch({ type: 'ADD_PHOTOS', payload: val}),
   }
 }
 
