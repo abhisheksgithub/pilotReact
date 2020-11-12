@@ -2,6 +2,10 @@ import React from 'react'
 import GridLayout from './GridLayout'
 import { connect } from 'react-redux'
 
+const style = {
+    margin: '10px'
+}
+
 class Dashboard extends React.Component {
     constructor(props) {
         super(props)
@@ -17,10 +21,9 @@ class Dashboard extends React.Component {
     }
 
     editMe = (id) => {
-        const findData = this.props.userData.find(item => item.id == id)
+        const findData = this.props.userData.find(item => item.id === id)
         this.setState({ editName : findData})
     }
-
     
     saveEditData = (id) => {
         this.props.userNameUpdate({ id: this.state.editName.id, name: this.state.editName.name})
@@ -37,8 +40,8 @@ class Dashboard extends React.Component {
             <>
                 <div><h2>My User Details</h2></div>
                 <div>
-                    <input type="text" value={this.state.editName.name} onChange={(evt)=>{ this.handleChange(evt) }}/>
-                    <button onClick={() => { this.saveEditData(this.state.editName.editId) }} >Save</button>
+                    <input style={{ margin: "5px" }} type="text" value={this.state.editName.name} onChange={(evt)=>{ this.handleChange(evt) }}/>
+                    <button style={{ margin: "5px",  border: "2px solid red" }} onClick={() => { this.saveEditData(this.state.editName.editId) }} >Save</button>
                 </div>
                 <div><ul>{this.props.userData.map((item, ind) => {
                     return <GridLayout key={ind} item={item} deleteMe={this.deleteMe} editMe={this.editMe}/>

@@ -21,15 +21,16 @@ class App extends React.Component {
        .then(data => { 
            this.props.userDetailUpdate(data)
        })
+       
     fetch('https://jsonplaceholder.typicode.com/comments').then(response => response.json())
       .then(data => {
           this.props.commentDetailUpdate(data)
       })
 
-    fetch('https://jsonplaceholder.typicode.com/photos').then(response => response.json())
-      .then(data => {
-        this.props.photoDetailUpdate(data)
-      })
+    // fetch('https://jsonplaceholder.typicode.com/photos').then(response => response.json())
+    //   .then(data => {
+    //     this.props.photoDetailUpdate(data)
+    //   })
 
   }
 
@@ -55,7 +56,7 @@ const mapDispatchToProps = dispatch => {
   return {
     userDetailUpdate : (val) => dispatch({ type: 'ADD_USERS', payload: val }),
     commentDetailUpdate: (val) => dispatch({ type: 'ADD_COMMENTS', payload: val}),
-    photoDetailUpdate: (val) => dispatch({ type: 'ADD_PHOTOS', payload: val}),
+  //  photoDetailUpdate: (val) => dispatch({ type: 'ADD_PHOTOS', payload: val}),
   }
 }
 
