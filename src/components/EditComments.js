@@ -45,7 +45,7 @@ class EditComments extends React.Component {
     }
 };
 
-const mapDispatchToPros = dispatch => ({
+const mapDispatchToProps = dispatch => ({
     updateComment : (val) => { dispatch({
         type: 'EDIT_COMMENT',
         payload: val
@@ -56,4 +56,4 @@ const mapStateToProps = state => ({
     commentDetails : state.commentDetails,
 })
 
-export default connect(mapStateToProps, mapDispatchToPros)(EditComments)
+export default connect(mapStateToProps, mapDispatchToProps)(EditComments)

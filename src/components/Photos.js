@@ -4,10 +4,12 @@ import { Link } from 'react-router-dom'
 
 class Photos extends React.Component {
     componentDidMount() {
-        fetch('https://jsonplaceholder.typicode.com/photos').then(response => response.json())
-          .then(data => {
-            this.props.photoDetailUpdate(data)
-          })
+        if(this.props.userPhotos.length === 0){
+            fetch('https://jsonplaceholder.typicode.com/photos').then(response => response.json())
+            .then(data => {
+              this.props.photoDetailUpdate(data)
+            })
+        }
       }
 
     render() {
@@ -17,9 +19,9 @@ class Photos extends React.Component {
                 <h3>User comment Details - photo</h3> 
                 {this.props.userPhotos.map((item, index) => { 
                      return (
-                         <div> 
+                         <div style={{display: "inline", width: "50px", margin: "15px"}}> 
                              <Link to={`/photos/editPhoto/${item.id}`}><img src={item.thumbnailUrl} alt={item.thumbnailUrl}></img></Link>
-                             <div> Photo Title: {item.title}</div>
+                             <div> {item.title}</div>
                              <div> Album Id: {item.albumId} </div>
                          </div>
                      )
