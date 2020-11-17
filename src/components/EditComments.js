@@ -28,7 +28,7 @@ class EditComments extends React.Component {
     handleClick = () => {
         console.log(this.state.editComment)
         this.props.updateComment(this.state.editComment)
-        
+        this.props.history.push("/comments");
     }
 
     render() {

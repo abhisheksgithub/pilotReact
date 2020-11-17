@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 function HookConcepts(props) {    
 
@@ -13,8 +14,8 @@ function HookConcepts(props) {
               <h4>Posts details</h4>
               <div>
                   <ul>
-                    {props.postsDetails.map(item => {
-                        return <li>{item.title}</li>
+                    {props.postsDetails.map( (item, index) => {
+                        return <li key={index}><Link to={`/posts/editPosts/${item.id}`}> {item.title} </Link></li>    
                     })}
                   </ul>
               </div>

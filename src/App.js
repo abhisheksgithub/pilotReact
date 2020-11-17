@@ -7,8 +7,9 @@ import Header from './components/Header';
 import Comments from './components/Comments';
 import Photos from './components/Photos';
 import EditComments from './components/EditComments';
-import EditPhoto from './components/EditPhoto';
+import EditPost from './components/EditPost';
 import HookConcepts from './components/HookConcepts';
+import EditPhoto from './components/EditPhoto';
 
 class App extends React.Component {
   constructor(props) {
@@ -47,6 +48,7 @@ class App extends React.Component {
             <Route exact path="/comments" component={Comments} />
             <Route path="/comments/editComments/:commentId" component={EditComments} /> 
             <Route path="/photos/editPhoto/:id" component={EditPhoto} /> 
+            <Route path="/posts/editPosts/:id" component={EditPost} /> 
           </Switch>
         </BrowserRouter>
       </div>

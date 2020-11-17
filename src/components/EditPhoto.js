@@ -29,9 +29,9 @@ class EditPhoto extends React.Component {
    
     handleClick = () => {
         console.log(this.state.editPhoto)
-        this.props.updatePhoto(this.state.editPhoto)   
+        this.props.updatePhoto(this.state.editPhoto)
+        this.props.history.push("/photos");
        }
-   
 
     render() {
         return (
