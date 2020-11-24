@@ -5,8 +5,10 @@ import { Link } from 'react-router-dom'
 function HookConcepts(props) {    
 
     useEffect(() => {
-        fetch('https://jsonplaceholder.typicode.com/posts').then(data =>  data.json())
-                .then(data => props.addPosts(data))
+        if(props.postsDetails.length == 0) {
+            fetch('https://jsonplaceholder.typicode.com/posts').then(data =>  data.json())
+            .then(data => props.addPosts(data))
+        }
     }, [])
 
     return (<>

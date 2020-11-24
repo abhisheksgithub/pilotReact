@@ -8,7 +8,8 @@ import reducer from './reducer/reducer'
 const initState = {
   userDetails: [],
   commentDetails: [],
-  photoDetails: []
+  photoDetails: [],
+  postsDetails: []
 }
 
 const store = createStore(reducer, initState)

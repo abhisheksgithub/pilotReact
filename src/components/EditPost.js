@@ -6,7 +6,8 @@ export function EditPosts(props){
 
 const [state, updatePost] = useState({
     title: "",
-    body: ""
+    body: "",
+    id: ''
  })
 
 
@@ -15,26 +16,26 @@ useEffect(() => {
     const filterPost = props.postDetails.find(item => item.id == id)
     updatePost({
             title: filterPost.title,
-            body: filterPost.body
+            body: filterPost.body,
+            id: filterPost.id
         })
     }, [])
 
   const handleChange = (evt) => {
-    updatePost ({
-            editPost: {...state.editPost, [evt.target.name]:evt.target.value}})
+    updatePost ({...state, [evt.target.name]:evt.target.value})
     }
 
   const  handleClick = () => {
-      console.log("HAndle Click --- ", state.editPost)
-        props.updatePost(state.editPost)
+      console.log("HAndle Click --- ", state)
+        props.updatePost(state)
         props.history.push("/posts");
     }
 
 return (<>
 Test message
     <div>
-        <div style={{margin:"10px"}}><input type="text" value={state.title} onChange={handleChange}/></div>
-        <div style={{margin:"10px"}}><input type="text" value={state.body} onChange={handleChange}/></div>
+        <div style={{margin:"10px"}}><input type="text" name="title" value={state.title} onChange={handleChange}/></div>
+        <div style={{margin:"10px"}}><input type="text" name="body" value={state.body} onChange={handleChange}/></div>
         <div style={{margin:"10px"}}><input type="button" value="Save" onClick={handleClick}/></div>
     </div>
 </>)
