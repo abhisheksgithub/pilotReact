@@ -10,7 +10,8 @@ class Dashboard extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            editName: { name: "" }
+            editName: { name: "" },
+            tempState: true
         }
     }
 
@@ -33,12 +34,23 @@ class Dashboard extends React.Component {
         this.setState({ editName: {...this.state.editName, name: evt.target.value }})
     }
 
+    handleState = () => {
+        this.setState((prevState) => {
+            return { tempState: !prevState.tempState }
+        }, ()=> {
+            console.log(this.state, 'My State 0')
+        })
+        
+        console.log(this.state, 'My State 1')
+
+    }
 
     render() {
         console.log(this.props, 'userData')
         return (
             <>
                 <div><h2>My User Details</h2></div>
+                <input type="button" value="something" onClick={() => this.handleState()} />
                 <div>
                     <input style={{ margin: "5px" }} type="text" value={this.state.editName.name} onChange={(evt)=>{ this.handleChange(evt) }}/>
                     <button style={{ margin: "5px",  border: "2px solid red" }} onClick={() => { this.saveEditData(this.state.editName.editId) }} >Save</button>

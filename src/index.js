@@ -9,7 +9,8 @@ const initState = {
   userDetails: [],
   commentDetails: [],
   photoDetails: [],
-  postsDetails: []
+  postsDetails: [],
+  todo: []
 }
 
 const store = createStore(reducer, initState)

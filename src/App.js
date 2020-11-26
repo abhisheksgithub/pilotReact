@@ -10,11 +10,14 @@ import EditComments from './components/EditComments';
 import EditPost from './components/EditPost';
 import HookConcepts from './components/HookConcepts';
 import EditPhoto from './components/EditPhoto';
+import TodoContextProvider from './DataContext/TodoContext';
+import Todo from './components/Todo';
 
 class App extends React.Component {
   constructor(props) {
     super(props)
   }
+
 
   componentDidMount() {
     fetch('https://jsonplaceholder.typicode.com/users').then(response => {
@@ -28,6 +31,12 @@ class App extends React.Component {
       .then(data => {
           this.props.commentDetailUpdate(data)
       })
+
+      
+    fetch('https://jsonplaceholder.typicode.com/todos').then(res => res.json())
+    .then(data => {
+
+    })
 
     // fetch('https://jsonplaceholder.typicode.com/photos').then(response => response.json())
     //   .then(data => {
@@ -49,6 +58,7 @@ class App extends React.Component {
             <Route path="/comments/editComments/:commentId" component={EditComments} /> 
             <Route path="/photos/editPhoto/:id" component={EditPhoto} /> 
             <Route path="/posts/editPosts/:id" component={EditPost} /> 
+            <Route path="/todo" render={(routeProps) => <TodoContextProvider><Todo /></TodoContextProvider>} />
           </Switch>
         </BrowserRouter>
       </div>

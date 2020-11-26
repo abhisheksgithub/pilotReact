@@ -11,6 +11,16 @@ function HookConcepts(props) {
         }
     }, [])
 
+    // this.setState(
+    //     ()=>{
+    //         return {products: tempProducts, cart: [...this.state.cart, 
+    //         product] };
+    //     }, 
+    //     () => {
+    //        this.addTotals();
+    //      });
+
+
     return (<>
             <div>
               <h4>Posts details</h4>
